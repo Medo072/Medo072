@@ -1,54 +1,19 @@
 # Hi, I'm Mohamed
 
 M.Sc. Computer Science student at the American University in Cairo, working on
-AI-based ALS detection and HD-EMG motor unit decomposition for neuroprosthetic
-control.
+AI-based ALS detection and HD-EMG motor unit decomposition to develop better AI systems that can be reliably used for ALS Identification.
+## Work and Interests
 
-## What I'm working on
+- I work on decomposing high-density surface EMG into individual motor unit spike
+trains, which is the signal layer that is used to identify a lot of neurodegenerative diseases. My main
+aim is to develop a decomposition algorithm built on extended-lag cospectral
+matrices and approximate joint diagonalization (JADOC) that is fast, reliable, and open-source. Around it I'm building a validation harness that scores decomposition.  
 
-I work on decomposing high-density surface EMG into individual motor unit spike
-trains — the signal layer under next-generation neuroprosthetic control. My main
-project is **MUelim**, a decomposition algorithm built on extended-lag cospectral
-matrices and approximate joint diagonalization (JADOC), written up for NeurIPS
-submission. Around it I've built a validation harness that scores decomposition
-against curated ground truth from multiple public datasets, and a GPU-batched
-hybrid engine that pairs MUelim's fast AJD front-end with a convolution-kernel-
-compensation refinement stage — reaching comparable recall to a cold-start CKC
-decomposition at roughly 16x the speed.
+- Additionally, I'm interested in advanced AI topics, such as LLMs architectures, how they are trained, and their safety.  
+I've worked on Adversarial attacks on LLMs and VLMs, and how to break the safety layers of a model.
 
-A large part of the work is adversarial self-benchmarking: every claim is checked
-against a stronger published baseline, and negative results are documented as
-carefully as positive ones (46 experiment records and a standing "closed dead
-ends" list). Honest positioning: a stronger published baseline (Swarm-Contrastive
-Decomposition) currently leads on recall by roughly 1.5-1.8x, while this pipeline
-runs 5-24x faster — speed is the defensible claim, recall is an open problem I'm
-actively working to close.
-
-**[MUelim →](#)** <!-- replace with repo link once public -->
-
-### Technical highlights
-
-- Decomposition pipeline: extend-lag → cospectral matrices → whitening →
-  approximate joint diagonalization (JADOC) → silhouette gating → peel-off
-  deflation
-- GPU-batched refinement (CuPy/fp32) — batches ~90 independent filter
-  refinements into single GEMMs
-- Recall engineering on real curated data: +46% genuine motor units on one
-  benchmark from fixing a single fixed-point convergence bug; +15% across four
-  contraction levels on another
-- Adaptive per-motor-unit filter tracking for dynamic (non-isometric)
-  contractions
-- Physiological accept gate based on discharge regularity (CoV-ISI) rather than
-  recording-dependent SNR thresholds — transfers across datasets without
-  retuning
-- Benchmarked on DEMUSE, Hug/Avrillon, HYSER, and the MUnitQuest challenge,
-  scored on both isometric and dynamic tasks
-- Determinism engineered into the pipeline so single runs are trustworthy —
-  I've retracted my own earlier results after multi-seed checks turned up
-  inconsistencies
-
-**Stack:** Python, NumPy, SciPy, scikit-learn, CuPy/CUDA, PyTorch, TensorFlow,
-WFDB, MATLAB data interchange
+- I'm interested in deepening my understanding of computers and software. An example is learning about different OSs and their history from the "OS: Three Pieces" book and its course, which explains how they handle processes and memory, and how to ship a fast, working OS.  
+I like to solve real problems that challenge my mind and help me gain a new skill and an extra edge. I'm a fast-learning person who can adapt to any new situation and any new field.
 
 ## Background
 
