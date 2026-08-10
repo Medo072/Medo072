@@ -1,48 +1,72 @@
-<div id="header" align="center">
-  <img src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" width="300"/>
-</div>
-<div id="badges" align="center">
-  <a href="https://www.linkedin.com/in/mohamed-abdelgawad-845a77223/">
-    <img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
-  </a>
-  <a href="https://www.facebook.com/mohamedi.ismail02/">
-    <img src="https://img.shields.io/badge/Facebook-blue?style=for-the-badge&logo=youtube&logoColor=white" alt="Facebook Badge"/>
-  </a>
-  <a href="https://twitter.com/M_72oo">
-    <img src="https://img.shields.io/badge/Twitter-blue?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter Badge"/>
-  </a>
-</div>
-<div id="counter" align="center">
- <img src="https://komarev.com/ghpvc/?username=Medo072&style=flat-square&color=blue" alt=""/ align="center">
-</div>
-<h1 align="center">
-  hey there
-  <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="30px"/>
-</h1>
+# Hi, I'm Mohamed
 
----  
+M.Sc. Computer Science student at the American University in Cairo, working on
+AI-based ALS detection and HD-EMG motor unit decomposition for neuroprosthetic
+control.
 
-### :man_technologist: About Me : 
-I am a Biomedical engineer interested in programming and new technologies especially in data science track <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">.
-- :telescope: I'm still a student in 2nd year and I'm open for any interesting internship.
+## What I'm working on
 
-- :zap: In my free time, I read books, Read articles about Programming and new techs, or learn new things.
+I work on decomposing high-density surface EMG into individual motor unit spike
+trains — the signal layer under next-generation neuroprosthetic control. My main
+project is **MUelim**, a decomposition algorithm built on extended-lag cospectral
+matrices and approximate joint diagonalization (JADOC), written up for NeurIPS
+submission. Around it I've built a validation harness that scores decomposition
+against curated ground truth from multiple public datasets, and a GPU-batched
+hybrid engine that pairs MUelim's fast AJD front-end with a convolution-kernel-
+compensation refinement stage — reaching comparable recall to a cold-start CKC
+decomposition at roughly 16x the speed.
 
-- :mailbox:How to reach me: [![Linkedin Badge](https://img.shields.io/badge/-MohamedIbrahim-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/mohamed-abdelgawad-845a77223/)
----
+A large part of the work is adversarial self-benchmarking: every claim is checked
+against a stronger published baseline, and negative results are documented as
+carefully as positive ones (46 experiment records and a standing "closed dead
+ends" list). Honest positioning: a stronger published baseline (Swarm-Contrastive
+Decomposition) currently leads on recall by roughly 1.5-1.8x, while this pipeline
+runs 5-24x faster — speed is the defensible claim, recall is an open problem I'm
+actively working to close.
 
-### :hammer_and_wrench: Languages and Tools :
-<div>
-  <img src="https://github.com/devicons/devicon/blob/master/icons/cplusplus/cplusplus-plain.svg" title="C++" alt="C++" width="60" height="60"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/python/python-original-wordmark.svg" title="Python" alt="Python" width="60" height="60"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/git/git-original-wordmark.svg" title="Git" **alt="Git" width="60" height="60"/>
-  <img src="https://github.com/devicons/devicon/blob/master/icons/vscode/vscode-original-wordmark.svg" title="Vscode" **alt="Vscode" width="60" height="60"/>
-  <img src="https://github.com/devicons/devicon/blob/master/icons/jupyter/jupyter-original-wordmark.svg" title="Jupyter" **alt="Jupyter" width="60" height="60"/>
-</div>
+**[MUelim →](#)** <!-- replace with repo link once public -->
 
----
+### Technical highlights
 
-### :fire: My Stats :
-[![GitHub Streak](https://github-readme-streak-stats.herokuapp.com?user=Medo072&theme=tokyonight_duo)](https://git.io/streak-stats)
+- Decomposition pipeline: extend-lag → cospectral matrices → whitening →
+  approximate joint diagonalization (JADOC) → silhouette gating → peel-off
+  deflation
+- GPU-batched refinement (CuPy/fp32) — batches ~90 independent filter
+  refinements into single GEMMs
+- Recall engineering on real curated data: +46% genuine motor units on one
+  benchmark from fixing a single fixed-point convergence bug; +15% across four
+  contraction levels on another
+- Adaptive per-motor-unit filter tracking for dynamic (non-isometric)
+  contractions
+- Physiological accept gate based on discharge regularity (CoV-ISI) rather than
+  recording-dependent SNR thresholds — transfers across datasets without
+  retuning
+- Benchmarked on DEMUSE, Hug/Avrillon, HYSER, and the MUnitQuest challenge,
+  scored on both isometric and dynamic tasks
+- Determinism engineered into the pipeline so single runs are trustworthy —
+  I've retracted my own earlier results after multi-seed checks turned up
+  inconsistencies
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Medo072&layout=compact&theme=vision-friendly-dark)](https://github.com/anuraghazra/github-readme-stats)
+**Stack:** Python, NumPy, SciPy, scikit-learn, CuPy/CUDA, PyTorch, TensorFlow,
+WFDB, MATLAB data interchange
+
+## Background
+
+- **Research Assistant**, American University in Cairo (Jan 2026–present) —
+  early-stage ALS patient classification, transferring knowledge from mice EMG
+  signals to the human spectrum with a custom AI model
+- **Data Science Intern**, PayMob (Jul–Sep 2025) — migrated a merchant chatbot
+  from a basic architecture to LangGraph agents; built an LLM-based Q&A system
+  over monthly merchant performance reports with PDF ingestion and contextual
+  retrieval; cut a parallelized HTML→PDF rendering pipeline's full-run time by
+  ~97% (~4 hours → ~7 minutes)
+- **Undergraduate Research Intern**, Stanford University (supervisor: Ahmad A.
+  Rushdi, PhD) — demonstrated jailbreaking of vision-language models via
+  frequency-domain adversarial attacks transferred to the image domain
+- **B.Sc. Systems and Biomedical Engineering**, Cairo University (2021–2025,
+  GPA 3.7/4.0) — graduation project on pancreatic cancer detection: deep
+  learning lesion segmentation and radiomics feature extraction from CT/MRI
+
+## Elsewhere
+
+[LinkedIn](https://linkedin.com/in/mohamedii)
